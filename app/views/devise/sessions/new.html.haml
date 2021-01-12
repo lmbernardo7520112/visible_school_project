@@ -1,0 +1,65 @@
+#logreg-forms
+  %form.form-signin
+    %h1.h3.mb-3.font-weight-normal{:style => "text-align: center"} Sign in
+    .social-login
+      %button.btn.facebook-btn.social-btn{:type => "button"}
+        %span
+          %i.fab.fa-facebook-f
+          Sign in with Facebook
+      %button.btn.google-btn.social-btn{:type => "button"}
+        %span
+          %i.fab.fa-google-plus-g
+          Sign in with Google+
+    %p{:style => "text-align:center"} OR
+    %input#inputEmail.form-control{:autofocus => "", :placeholder => "Email address", :required => "", :type => "email"}/
+    %input#inputPassword.form-control{:placeholder => "Password", :required => "", :type => "password"}/
+    %button.btn.btn-success.btn-block{:type => "submit"}
+      %i.fas.fa-sign-in-alt
+      Sign in
+    %a#forgot_pswd{:href => "#"} Forgot password?
+    %hr/
+    / <p>Don't have an account!</p>
+    %button#btn-signup.btn.btn-primary.btn-block{:type => "button"}
+      %i.fas.fa-user-plus
+      Sign up New Account
+  %form.form-reset{:action => "/reset/password/"}
+    %input#resetEmail.form-control{:autofocus => "", :placeholder => "Email address", :required => "", :type => "email"}/
+    %button.btn.btn-primary.btn-block{:type => "submit"} Reset Password
+    %a#cancel_reset{:href => "#"}
+      %i.fas.fa-angle-left
+      Back
+  %form.form-signup{:action => "/signup/"}
+    .social-login
+      %button.btn.facebook-btn.social-btn{:type => "button"}
+        %span
+          %i.fab.fa-facebook-f
+          Sign up with Facebook
+    .social-login
+      %button.btn.google-btn.social-btn{:type => "button"}
+        %span
+          %i.fab.fa-google-plus-g
+          Sign up with Google+
+    %p{:style => "text-align:center"} OR
+    %input#user-name.form-control{:autofocus => "", :placeholder => "Full name", :required => "", :type => "text"}/
+    %input#user-email.form-control{:autofocus => "", :placeholder => "Email address", :required => "", :type => "email"}/
+    %input#user-pass.form-control{:autofocus => "", :placeholder => "Password", :required => "", :type => "password"}/
+    %input#user-repeatpass.form-control{:autofocus => "", :placeholder => "Repeat Password", :required => "", :type => "password"}/
+    %button.btn.btn-primary.btn-block{:type => "submit"}
+      %i.fas.fa-user-plus
+      Sign Up
+    %a#cancel_signup{:href => "#"}
+      %i.fas.fa-angle-left
+      Back
+  %br/
+
+
+
+%h2 Log in
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .form-inputs
+    = f.input :email, required: false, autofocus: true, input_html: { autocomplete: "email" }
+    = f.input :password, required: false, input_html: { autocomplete: "current-password" }
+    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+  .form-actions
+    = f.button :submit, "Log in"
+= render "devise/shared/links"
