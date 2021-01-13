@@ -1,19 +1,10 @@
-
-%form.form-signin
-  %h1.h3.mb-3.font-weight-normal{:style => "text-align: center"} Sign in
-  %h2 Log in
+%h1.h3.mb-3.font-weight-normal.title{:style => "text-align: center"} Log in
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .form-inputs
-    = f.input :email, required: false, label: false, autofocus: true, input_html: { autocomplete: "email" }
-    = f.input :password, required: false, label: false, input_html: { autocomplete: "current-password" }
-    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+    = f.input :email, required: false, label: false, autofocus: true, input_html: { autocomplete: "email" }, placeholder: 'E-mail'
+    = f.input :password, required: false, label: false, input_html: { autocomplete: "current-password" }, placeholder: 'Senha'
+    = f.input :remember_me, input_html: {  class: 'remember' }, as: :boolean if devise_mapping.rememberable?
   .form-actions
-    = f.button :submit, "Log in", class: 'btn btn-primary btn-block'
-    %hr/
+    = f.button :submit, "Entrar", class: 'btn btn-primary btn-block'
+  %hr/
   = render "devise/shared/links"
-  
-  / <p>Don't have an account!</p>
-  
-
-
-

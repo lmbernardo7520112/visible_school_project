@@ -110,3 +110,12 @@
 .form-group {
     margin-bottom: 0px !important;
 }
+
+.user_remember_me, .form-actions {
+    margin: 10px 0px;
+}
+
+.title {
+    padding-top: 20px;
+}
+
